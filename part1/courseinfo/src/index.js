@@ -27,13 +27,13 @@ const Content = (props) => {
 
 const Total = (props) => {
   const exercises = props.course.parts.map(part => part.exercises)
-  const numberOfCourses = exercises.reduce((acc, num) => {
+  const numberOfExercises = exercises.reduce((acc, num) => {
     return acc + num
   })
   
   return (
     <div>
-      <p>Number of exercises {numberOfCourses}</p>
+      <p>Number of exercises {numberOfExercises}</p>
     </div>
   )
 }
