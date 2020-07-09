@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const Header = (props) => {
-  return <h1>{props.courseName.name}</h1>
+  return <h1>{props.course.name}</h1>
 }
 
 const Part = (props) => {
@@ -14,6 +14,7 @@ const Part = (props) => {
 }
 
 const Content = (props) => {
+  console.log(props)
   return (
     <div>
       <Part part={props.course.parts[0].name} exercises={props.course.parts[0].exercises}/>
@@ -23,9 +24,20 @@ const Content = (props) => {
   )
 }
 
-const Total = (props) => (
-  <p>Number of exercises {props.course.parts[0].exercises + props.course.parts[1].exercises + props.course.parts[2].exercises}</p>
-)
+
+const Total = (props) => {
+  const exercises = props.course.parts.map(part => part.exercises)
+  const numberOfCourses = exercises.reduce((acc, num) => {
+    return acc + num
+  })
+  
+  return (
+    <div>
+      <p>Number of exercises {numberOfCourses}</p>
+    </div>
+  )
+}
+
 
 const App = () => {
   const course = {
@@ -48,7 +60,7 @@ const App = () => {
 
   return (
     <div>
-      <Header courseName={course} />
+      <Header course={course} />
       <Content course={course}/>
       <Total course={course}/>
     </div>
