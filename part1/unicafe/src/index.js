@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-// TODO: find a better solution
+
 const Positive = (props) => {
   let positive = props.good / props.all * 100
   if (!positive) {
@@ -14,6 +14,7 @@ const Positive = (props) => {
 }
 
 const Average = (props) => {
+  console.log(props)
   let average = (props.good - props.bad) / props.all
   if (!average) {
     return "Average: 0"
@@ -29,6 +30,20 @@ const History = (props) => {
   return (
     <div>
       {props.text}: {props.all}
+    </div>
+  )
+}
+
+const Statistics = (props) => {
+  return (
+    <div>
+      <h1>Statistics</h1>
+      <Display text="Good" feedback={props.good} />
+      <Display text="Neutral" feedback={props.neutral} />
+      <Display text="Bad" feedback={props.bad} />
+      <History text="All" all={props.all} />
+      <Average text="Average" good={props.good} bad={props.bad} all={props.all} /><br/>
+      <Positive text="Positive" good={props.good} all={props.all}/>
     </div>
   )
 }
@@ -70,13 +85,7 @@ const App = () => {
     <Button onClick={handleSetGood} text="Good"/>
     <Button onClick={handleSetNeutral} text="Neutral"/>
     <Button onClick={handleSetBad} text="Bad"/>
-    <h1>Statistics</h1>
-    <Display text="Good" feedback={good} />
-    <Display text="Neutral" feedback={neutral} />
-    <Display text="Bad" feedback={bad} />
-    <History text="All" all={all} />
-    <Average text="Average" good={good} bad={bad} all={all} /><br/>
-    <Positive text="Positive" good={good} all={all}/>
+    <Statistics good={good} neutral={neutral} bad={bad} all={all} />
   </div>
   )
 }
