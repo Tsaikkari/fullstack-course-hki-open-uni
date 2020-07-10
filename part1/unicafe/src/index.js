@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-
+//TODO: change
 const Positive = (props) => {
   let positive = props.good / props.all * 100
   if (!positive) {
@@ -26,7 +26,7 @@ const Average = (props) => {
   )
 }
 
-const History = (props) => {
+const All = (props) => {
   return (
     <div>
       {props.text}: {props.all}
@@ -35,14 +35,16 @@ const History = (props) => {
 }
 
 const Statistics = (props) => {
+  if (props.all === 0) {
+    return <p>No feedback given</p>
+  }
   return (
     <div>
-      <h1>Statistics</h1>
       <Display text="Good" feedback={props.good} />
       <Display text="Neutral" feedback={props.neutral} />
       <Display text="Bad" feedback={props.bad} />
-      <History text="All" all={props.all} />
-      <Average text="Average" good={props.good} bad={props.bad} all={props.all} /><br/>
+      <All text="All" all={props.all} />
+      <Average text="Average" good={props.good} bad={props.bad} all={props.all} />
       <Positive text="Positive" good={props.good} all={props.all}/>
     </div>
   )
@@ -85,6 +87,7 @@ const App = () => {
     <Button onClick={handleSetGood} text="Good"/>
     <Button onClick={handleSetNeutral} text="Neutral"/>
     <Button onClick={handleSetBad} text="Bad"/>
+    <h1>Statistics</h1>
     <Statistics good={good} neutral={neutral} bad={bad} all={all} />
   </div>
   )
