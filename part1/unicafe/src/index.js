@@ -28,18 +28,18 @@ const App = () => {
   const [all, setAll] = useState(0)
 
   const handleSetGood = () => {
-    setAll(all + good + 1)
     setGood(good + 1)
+    setAll(all + 1)
   }
 
   const handleSetNeutral = () => {
-    setAll(all + neutral + 1)
     setNeutral(neutral + 1)
+    setAll(all + 1)
   }
 
   const handleSetBad = () => {
-    setAll(all + bad + 1)
     setBad(bad + 1)
+    setAll(all + 1)
   }
 
   return (
