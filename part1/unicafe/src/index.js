@@ -40,9 +40,9 @@ const Statistics = (props) => {
   }
   return (
     <div>
-      <Display text="Good" feedback={props.good} />
-      <Display text="Neutral" feedback={props.neutral} />
-      <Display text="Bad" feedback={props.bad} />
+      <Statistic text="Good" feedback={props.good} />
+      <Statistic text="Neutral" feedback={props.neutral} />
+      <Statistic text="Bad" feedback={props.bad} />
       <All text="All" all={props.all} />
       <Average text="Average" good={props.good} bad={props.bad} all={props.all} />
       <Positive text="Positive" good={props.good} all={props.all}/>
@@ -50,7 +50,7 @@ const Statistics = (props) => {
   )
 }
 
-const Display = (props) => (
+const Statistic = (props) => (
   <div>
     {props.text}: {props.feedback}
   </div>
