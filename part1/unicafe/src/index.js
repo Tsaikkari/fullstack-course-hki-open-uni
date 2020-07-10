@@ -1,19 +1,37 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
+const Positive = (props) => {
+  return (
+    <div> 
+      {props.text}: {props.positive}%
+    </div>
+  )
+}
+
+const Average = (props) => {
+  let average = (props.goodValue - props.badValue) / props.allValue
+  if (!average) {
+    return "Average: 0"
+  }
+  return (
+    <div>
+      {props.text}: {average}
+    </div>
+  )
+}
+
 const History = (props) => {
   return (
     <div>
-      {props.text}
-      {props.all}
+      {props.text}: {props.all}
     </div>
   )
 }
 
 const Display = (props) => (
   <div>
-    {props.text} 
-    {props.feedback}
+    {props.text}: {props.feedback}
   </div>
 )
     
@@ -53,6 +71,8 @@ const App = () => {
     <Display text="Neutral" feedback={neutral} />
     <Display text="Bad" feedback={bad} />
     <History text="All" all={all} />
+    <Average text="Average" goodValue={good} badValue={bad} allValue={all} />
+    <Positive text="Positive" />
   </div>
   )
 }
