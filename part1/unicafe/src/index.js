@@ -83,12 +83,28 @@ const App = () => {
 
   return (
   <div>
-    <h1>Give feedback</h1>
-    <Button onClick={handleSetGood} text="Good"/>
-    <Button onClick={handleSetNeutral} text="Neutral"/>
-    <Button onClick={handleSetBad} text="Bad"/>
-    <h1>Statistics</h1>
-    <Statistics good={good} neutral={neutral} bad={bad} all={all} />
+    <table cellSpacing="20">
+      <thead>
+        <tr>
+          <th>Give feedback</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <Button onClick={handleSetGood} text="Good"/>
+            <Button onClick={handleSetNeutral} text="Neutral"/>
+            <Button onClick={handleSetBad} text="Bad"/>
+          </td>
+        </tr>
+        <tr>
+          <th>Statistics</th>
+        </tr>
+        <tr>
+          <td><Statistics good={good} neutral={neutral} bad={bad} all={all} /></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   )
 }
