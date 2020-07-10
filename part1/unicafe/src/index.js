@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
+const History = (props) => {
+  return (
+    <div>
+      {props.text}
+      {props.all}
+    </div>
+  )
+}
+
 const Display = (props) => (
   <div>
     {props.text} 
@@ -16,16 +25,20 @@ const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
+  const [all, setAll] = useState(0)
 
   const handleSetGood = () => {
+    setAll(all + good + 1)
     setGood(good + 1)
   }
 
   const handleSetNeutral = () => {
+    setAll(all + neutral + 1)
     setNeutral(neutral + 1)
   }
 
   const handleSetBad = () => {
+    setAll(all + bad + 1)
     setBad(bad + 1)
   }
 
@@ -39,6 +52,7 @@ const App = () => {
     <Display text="Good" feedback={good} />
     <Display text="Neutral" feedback={neutral} />
     <Display text="Bad" feedback={bad} />
+    <History text="All" all={all} />
   </div>
   )
 }
