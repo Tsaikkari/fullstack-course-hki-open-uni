@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-
+// TODO: find a better solution
 const Positive = (props) => {
+  let positive = props.good / props.all * 100
+  if (!positive) {
+    return "Positive: 0%"
+  }
   return (
     <div> 
-      {props.text}: {props.positive}%
+      {props.text}: {positive + '%'} 
     </div>
   )
 }
 
 const Average = (props) => {
-  let average = (props.goodValue - props.badValue) / props.allValue
+  let average = (props.good - props.bad) / props.all
   if (!average) {
     return "Average: 0"
   }
@@ -71,8 +75,8 @@ const App = () => {
     <Display text="Neutral" feedback={neutral} />
     <Display text="Bad" feedback={bad} />
     <History text="All" all={all} />
-    <Average text="Average" goodValue={good} badValue={bad} allValue={all} />
-    <Positive text="Positive" />
+    <Average text="Average" good={good} bad={bad} all={all} /><br/>
+    <Positive text="Positive" good={good} all={all}/>
   </div>
   )
 }
