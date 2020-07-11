@@ -1,20 +1,48 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
+const arrLength = 5
+const points = Array(arrLength).fill(0)
+const copy = [...points]
+
 const App = (props) => {
   const [selected, setSelected] = useState('') 
-
+  const [votes, setPoints] = useState()
+  const [hurts, manpower, time, understand, evil, debugging] = anecdotes
+  
   const handleSelect = () => {
     const randomNumber = Math.floor(Math.random() * props.anecdotes.length)
     let selected = props.anecdotes[randomNumber]
     setSelected(selected)
+    // TODO: shows previous votes of each anecdote
+    setPoints(0)
+  }
+
+  //TODO: fix last anecdote's vote type
+  const handleVote = () => {
+    if (selected === hurts) {
+      setPoints(copy[0] += 1)
+    } else if (selected === manpower) {
+      setPoints(copy[1] += 1)
+    } else if (selected === time) {
+      setPoints(copy[2] += 1)
+    } else if (selected === understand) {
+      setPoints(copy[3] += 1)
+    } else if (selected === evil) {
+      setPoints(copy[4] += 1)
+    } else if (selected === debugging) {
+      setPoints(copy[5] += 1)
+    } 
   }
 
   return (
     <div>
-      {selected}
-      <button onClick={handleSelect}>Pick anecdote</button>
+      <p>{selected}</p>
+      <p>{votes}</p>
+      <button onClick={handleVote}>vote</button>
+      <button onClick={handleSelect}>next anecdote</button>
     </div>
+    
   )
 }
 
@@ -31,3 +59,4 @@ ReactDOM.render(
   <App anecdotes={anecdotes} />,
   document.getElementById('root')
 )
+
