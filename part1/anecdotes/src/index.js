@@ -1,48 +1,68 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
-const arrLength = 5
+const arrLength = 6
 const points = Array(arrLength).fill(0)
 const copy = [...points]
 
 const App = (props) => {
-  const [selected, setSelected] = useState('') 
-  const [votes, setPoints] = useState()
+  const [selected, setSelected] = useState(props.anecdotes[0]) 
+  const [votes, setPoints] = useState(0)
+  const [mostPopular, setMostPopular] = useState('')
   const [hurts, manpower, time, understand, evil, debugging] = anecdotes
   
   const handleSelect = () => {
     const randomNumber = Math.floor(Math.random() * props.anecdotes.length)
     let selected = props.anecdotes[randomNumber]
     setSelected(selected)
-    // TODO: shows previous votes of each anecdote
+    //setSelected(Math.floor(Math.random() * props.anecdotes.length))
+    // TODO: shows previous votes of each anecdote not the previous one's
     setPoints(0)
   }
 
-  //TODO: fix last anecdote's vote type
   const handleVote = () => {
-    if (selected === hurts) {
-      setPoints(copy[0] += 1)
-    } else if (selected === manpower) {
-      setPoints(copy[1] += 1)
-    } else if (selected === time) {
-      setPoints(copy[2] += 1)
-    } else if (selected === understand) {
-      setPoints(copy[3] += 1)
-    } else if (selected === evil) {
-      setPoints(copy[4] += 1)
-    } else if (selected === debugging) {
-      setPoints(copy[5] += 1)
-    } 
+    let maxVote = Math.max(...copy)
+    switch (selected) {
+      case hurts:
+        setPoints(copy[0] += 1)
+        copy[0] === maxVote && setMostPopular(hurts)
+        break;
+      case manpower: 
+        setPoints(copy[1] += 1)
+        copy[1] === maxVote && setMostPopular(manpower)
+        break;
+      case time:
+        setPoints(copy[2] += 1)
+        copy[2] === maxVote && setMostPopular(time)
+        break;
+      case understand:
+        setPoints(copy[3] += 1)
+        copy[3] === maxVote && setMostPopular(understand)
+        break;
+      case evil:
+        setPoints(copy[4] += 1)
+        copy[4] === maxVote && setMostPopular(evil)
+        break;
+      case debugging:
+        setPoints(copy[5] += 1)
+        copy[5] === maxVote && setMostPopular(debugging)
+        break;
+        default:
+          return 'oh no'
+    }
   }
 
   return (
     <div>
-      <p>{selected}</p>
-      <p>{votes}</p>
+      <h1>Anecdote of the day</h1>
+        <p>{selected}</p>
+        <p>{votes}</p>
       <button onClick={handleVote}>vote</button>
       <button onClick={handleSelect}>next anecdote</button>
+      <h1>Anectode with most votes</h1>
+        <p>{mostPopular}</p>
+        {mostPopular && <p>has {Math.max(...copy)} votes</p>}
     </div>
-    
   )
 }
 
