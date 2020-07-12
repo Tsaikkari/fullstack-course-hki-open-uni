@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-//TODO: change
+
 const Positive = (props) => {
   let positive = props.good / props.all * 100
-  if (!positive) {
-    return "Positive: 0%"
-  }
   return (
     <div> 
       {props.text}: {positive + '%'} 
@@ -14,11 +11,7 @@ const Positive = (props) => {
 }
 
 const Average = (props) => {
-  console.log(props)
   let average = (props.good - props.bad) / props.all
-  if (!average) {
-    return "Average: 0"
-  }
   return (
     <div>
       {props.text}: {average}
@@ -65,20 +58,28 @@ const App = () => {
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
   const [all, setAll] = useState(0)
+  const [average, setAverage] = useState(0)
+  const [positive, setPositive] = useState(0)
 
   const handleSetGood = () => {
     setGood(good + 1)
     setAll(all + 1)
+    setAverage(average)
+    setPositive(positive)
   }
 
   const handleSetNeutral = () => {
     setNeutral(neutral + 1)
     setAll(all + 1)
+    setAverage(average)
+    setPositive(positive)
   }
 
   const handleSetBad = () => {
     setBad(bad + 1)
     setAll(all + 1)
+    setAverage(average)
+    setPositive(positive)
   }
 
   return (
