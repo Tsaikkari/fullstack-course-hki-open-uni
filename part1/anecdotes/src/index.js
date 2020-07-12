@@ -7,7 +7,7 @@ const copy = [...points]
 
 const App = (props) => {
   const [selected, setSelected] = useState(props.anecdotes[0]) 
-  const [votes, setPoints] = useState(0)
+  const [votes, setVotes] = useState(0)
   const [mostPopular, setMostPopular] = useState('')
   const [hurts, manpower, time, understand, evil, debugging] = anecdotes
   
@@ -16,39 +16,40 @@ const App = (props) => {
     let selected = props.anecdotes[randomNumber]
     setSelected(selected)
     //setSelected(Math.floor(Math.random() * props.anecdotes.length))
-    // TODO: shows previous votes of each anecdote not the previous one's
-    setPoints(0)
+    // TODO: shows previous votes of each anecdote not the previous one's votes
+    setVotes(0)
   }
 
+  // TODO: iterate that! (maybe in 10 years :D)
   const handleVote = () => {
     let maxVote = Math.max(...copy)
     switch (selected) {
       case hurts:
-        setPoints(copy[0] += 1)
+        setVotes(copy[0] += 1)
         copy[0] === maxVote && setMostPopular(hurts)
         break;
       case manpower: 
-        setPoints(copy[1] += 1)
+        setVotes(copy[1] += 1)
         copy[1] === maxVote && setMostPopular(manpower)
         break;
       case time:
-        setPoints(copy[2] += 1)
+        setVotes(copy[2] += 1)
         copy[2] === maxVote && setMostPopular(time)
         break;
       case understand:
-        setPoints(copy[3] += 1)
+        setVotes(copy[3] += 1)
         copy[3] === maxVote && setMostPopular(understand)
         break;
       case evil:
-        setPoints(copy[4] += 1)
+        setVotes(copy[4] += 1)
         copy[4] === maxVote && setMostPopular(evil)
         break;
       case debugging:
-        setPoints(copy[5] += 1)
+        setVotes(copy[5] += 1)
         copy[5] === maxVote && setMostPopular(debugging)
         break;
         default:
-          return 'oh no'
+          return ''
     }
   }
 

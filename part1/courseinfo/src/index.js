@@ -20,12 +20,12 @@ const Content = (props) => {
         <Part 
           key={part.name}
           name={part.name} 
-          exercises={part.exercises}/>
+          exercises={part.exercises}
+        />
       ))}
     </div>
   )
 }
-
 
 const Total = (props) => {
   const exercises = props.course.parts.map(part => part.exercises)
@@ -39,7 +39,6 @@ const Total = (props) => {
     </div>
   )
 }
-
 
 const App = () => {
   const course = {
