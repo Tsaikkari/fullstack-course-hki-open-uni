@@ -2,15 +2,24 @@ import React, { useState } from 'react'
 import Person from './components/Person';
 
 const App = () => {
-  const [ people, setPeople ] = useState([{ name: 'Arto Hellas' }]) 
-  const [ newName, setNewName ] = useState('')
+  const [people, setPeople] = useState([{ name: 'Arto Hellas' }]) 
+  const [newName, setNewName] = useState('')
+  
 
   const addName = (event) => {
     event.preventDefault()
-    const person = {
+    const personObject = {
       name: newName
     }
-    setPeople(people.concat(person))
+    let namesOfPeopleInPhonebook = people.map((person) => {
+      return person.name
+    })
+  
+    if (namesOfPeopleInPhonebook.includes(newName)) {
+      alert(`${newName} is already added to the phonebook`)
+    } else {
+      setPeople(people.concat(personObject))
+    } 
     setNewName('')
   }
 
