@@ -4,8 +4,8 @@ const SearchFilter = (props) => {
   return (
     <div>filter showing with 
       <input 
-        value={props.text} 
-        onChange={props.handleTextFilter} 
+        value={props.searchPerson} 
+        onChange={props.handleSetSearchPerson} 
       />
     </div>
   )

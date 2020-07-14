@@ -4,8 +4,8 @@ import Person from './Person';
 const PhonebookPage = (props) => {
   return (
     <div>
-      {props.people.map(person => 
-        <Person key={person.name} person={person} />
+      {props.filteredPeople.map(filteredPerson => 
+        <Person key={filteredPerson.name} filteredPerson={filteredPerson}/>
       )}
     </div>
   )

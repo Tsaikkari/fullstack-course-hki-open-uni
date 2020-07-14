@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PeopleForm from './components/PeopleForm';
 import PhonebookPage from './components/PhonebookPage';
 import SearchFilter from './components/SearchFilter';
@@ -12,7 +12,8 @@ const App = () => {
   ]) 
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
-  const [text, setTextFilter] = useState('')
+  const [searchPerson, setSearchPerson] = useState('')
+  const [filteredPeople, setFilteredPeople] = useState([])
 
   const addPerson = (event) => {
     event.preventDefault()
@@ -41,21 +42,22 @@ const App = () => {
     setNewNumber(event.target.value)
   }
 // TODO: fix this
-  const handleTextFilter = (event) => {
-    people.filter((person) => {
-      const text = event.target.value
-      const textMatch = person.name.toLowerCase().includes(text.toLowerCase())
-      setTextFilter(text)
-      return textMatch
+  const handleSetSearchPerson = (event) => {
+    let filteredPeople = people.filter(person => {
+      return person.name.toLowerCase().includes(searchPerson.toLowerCase())
     })
+    if (filteredPeople) {
+      setSearchPerson(event.target.value)
+    }
+    setFilteredPeople(filteredPeople)
   }
 
   return (
     <div>
       <h2>Phonebook</h2>
       <SearchFilter 
-        text={text}
-        handleTextFilter={handleTextFilter}
+        searchPerson={searchPerson}
+        handleSetSearchPerson={handleSetSearchPerson}
       />
       <h2>add a new</h2>
       <PeopleForm 
@@ -66,7 +68,9 @@ const App = () => {
         handleNumberChange={handleNumberChange}
       />
       <h2>Numbers</h2>
-      <PhonebookPage people={people}/>
+      <PhonebookPage 
+        filteredPeople={filteredPeople}
+      />
     </div>
   )
 }

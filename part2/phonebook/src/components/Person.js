@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Person = ({ person }) => {
+const Person = ({ filteredPerson }) => {
   return (
-    <p>{person.name} {person.number}</p>
+    <p>{filteredPerson.name} {filteredPerson.number}</p>
   )
 }
 
