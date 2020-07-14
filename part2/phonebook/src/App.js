@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import PeopleForm from './components/PeopleForm';
 import PhonebookPage from './components/PhonebookPage';
 import SearchFilter from './components/SearchFilter';
@@ -41,7 +41,7 @@ const App = () => {
   const handleNumberChange = (event) => {
     setNewNumber(event.target.value)
   }
-// TODO: fix this
+
   const handleSetSearchPerson = (event) => {
     let filteredPeople = people.filter(person => {
       return person.name.toLowerCase().includes(searchPerson.toLowerCase())
