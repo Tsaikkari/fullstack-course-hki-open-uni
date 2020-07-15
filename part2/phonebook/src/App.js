@@ -1,19 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 import PeopleForm from './components/PeopleForm';
 import PhonebookPage from './components/PhonebookPage';
 import SearchFilter from './components/SearchFilter';
 
 const App = () => {
-  const [people, setPeople] = useState([
-    { name: 'Arto Hellas', number: '040-1234567' },
-    { name: 'Ada Lovelace', number: '39-44-5323523' },
-    { name: 'Dan Abramov', number: '12-43-234345' },
-    { name: 'Mary Poppendieck', number: '39-23-6423122' }
-  ]) 
+  const [people, setPeople] = useState([]) 
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [searchPerson, setSearchPerson] = useState('')
   const [filteredPeople, setFilteredPeople] = useState([])
+
+  const hook = () => {
+    axios
+    .get('http://localhost:3001/people')
+    .then(response => {
+      setPeople(response.data)
+    })
+  }
+
+  useEffect(hook, [])
 
   const addPerson = (event) => {
     event.preventDefault()
@@ -44,12 +50,14 @@ const App = () => {
 
   const handleSetSearchPerson = (event) => {
     let filteredPeople = people.filter(person => {
-      return person.name.toLowerCase().includes(searchPerson.toLowerCase())
+      return person.name.toLowerCase().includes(event.target.value.toLowerCase())
     })
-    if (filteredPeople) {
-      setSearchPerson(event.target.value)
+    setSearchPerson(event.target.value)
+    if (event.target.value === '') {
+      setFilteredPeople([])
+    } else {
+      setFilteredPeople(filteredPeople)
     }
-    setFilteredPeople(filteredPeople)
   }
 
   return (
