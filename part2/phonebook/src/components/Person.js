@@ -1,8 +1,10 @@
 import React from 'react';
 
-const Person = ({ filteredPerson }) => {
+const Person = ({ person }) => {
   return (
-    <p>{filteredPerson.name} {filteredPerson.number}</p>
+    <div>
+      <p>{person.name} {person.number}</p>
+    </div>
   )
 }
 
