@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react'
 import PeopleForm from './components/PeopleForm';
 import Person from './components/Person'
 import personService from './services/people';
+import SearchBox from './components/SearchBox';
 
 const App = () => {
   const [people, setPeople] = useState([]) 
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
+  const [showAll, setShowAll] = useState(true)
+  const [searchPerson, setSearchPerson]  = useState('')
+  const [filteredPeople, setFilteredPeople] = useState([])
 
   useEffect(() => {
     personService
@@ -15,6 +19,23 @@ const App = () => {
         setPeople(initialPeople)
       })
   }, [])
+
+  const peopleToShow = showAll
+  ? people
+  : filteredPeople
+
+  const handlePersonSearch = (event) => {
+    let filteredPeople = people.filter(person => {
+      return person.name.toLowerCase().includes(event.target.value.toLowerCase())
+    })
+    setSearchPerson(event.target.value)
+    if (event.target.value === '') {
+      setShowAll(peopleToShow)
+    } else {
+      setFilteredPeople(filteredPeople)
+      setShowAll(!showAll)
+    }
+  }
 
   const addPerson = (event) => {
     event.preventDefault()
@@ -49,6 +70,11 @@ const App = () => {
 
   return (
     <div>
+      <h1>Phonebook</h1>
+      <SearchBox 
+        searchPerson={searchPerson}
+        handlePersonSearch={handlePersonSearch}
+      />
       <h2>add a new</h2>
       <PeopleForm 
         addPerson={addPerson}
@@ -59,7 +85,7 @@ const App = () => {
       />
       <div>
       <div>
-      {people.map((person, i) => 
+      {peopleToShow.map((person, i) => 
         <Person key={i} person={person} />
       )}
       </div>
