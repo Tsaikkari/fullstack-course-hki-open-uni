@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import PeopleForm from './components/PeopleForm';
-import Person from './components/Person'
+import People from './components/People'
 import personService from './services/people';
 import SearchBox from './components/SearchBox';
 
@@ -83,13 +83,9 @@ const App = () => {
         handleNumberChange={handleNumberChange}
         handlePersonChange={handlePersonChange}
       />
-      <div>
-      <div>
-      {peopleToShow.map((person, i) => 
-        <Person key={i} person={person} />
-      )}
-      </div>
-      </div>
+      <People 
+        peopleToShow={peopleToShow}
+      />
       <h2>Numbers</h2>
     </div>
   )
