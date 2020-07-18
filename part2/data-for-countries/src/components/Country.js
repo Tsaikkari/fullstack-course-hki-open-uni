@@ -6,12 +6,13 @@ const Country = ({ country }) => {
       <h1>{country.name}</h1>
       <p>capital {country.capital}</p>
       <p>population {country.population}</p>
-      <div>
-    {country.languages.map((language, i) => 
-      <p key={i}>{language.name}</p>
-    )}
-    </div>
-      <a href={country.flag}></a>
+      <h3>languages</h3>
+      <ul>
+        {country.languages.map((language, i) => 
+        <li key={i}>{language.name}</li>
+        )}
+      </ul>
+      <img src={country.flag} />
     </div>
   )
 }

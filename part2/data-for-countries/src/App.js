@@ -41,7 +41,7 @@ const App = () => {
         handleCountrySearch={handleCountrySearch}
       />
       {(filteredCountries.length > 1 && filteredCountries.length <= 10) && 
-      <Countries filteredCountries={filteredCountries} />}
+        <Countries filteredCountries={filteredCountries} />}
       {filteredCountries.length > 10 && <p>Too many matches, specify another filter</p>}
       {filteredCountries.length === 1 && filteredCountries.map((country) => 
         <Country key={country.flag} country={country} />
