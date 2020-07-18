@@ -25,17 +25,12 @@ const App = () => {
     let filteredCountries = countries.filter(country => {
       return country.name.toLowerCase().includes(event.target.value.toLowerCase())
     })
-    let maxNineCountries = filteredCountries.slice(1,10)
-    let oneCountry = filteredCountries.slice(0,1)
-
     setSearchCountry(event.target.value)
+    console.log(event.target.value)
     if (event.target.value === '') {
       setFilteredCountries([])
     } else {
-      setFilteredCountries(maxNineCountries)
-    }
-    if (filteredCountries.length < 2) {
-      setFilteredCountries(oneCountry)
+      setFilteredCountries(filteredCountries)
     }
   }
     
@@ -45,9 +40,9 @@ const App = () => {
         searchCountry={searchCountry}
         handleCountrySearch={handleCountrySearch}
       />
-      <Countries 
-        filteredCountries={filteredCountries}
-      />
+      {(filteredCountries.length > 1 && filteredCountries.length <= 10) && 
+      <Countries filteredCountries={filteredCountries} />}
+      {filteredCountries.length > 10 && <p>Too many matches, specify another filter</p>}
       {filteredCountries.length === 1 && filteredCountries.map((country) => 
         <Country key={country.flag} country={country} />
       )}
