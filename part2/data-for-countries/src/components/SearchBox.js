@@ -5,8 +5,9 @@ const SearchBox = (props) => (
     <div>
       find countries 
       <input type="text" 
-      value={props.searchCountry}
-      onChange={props.handleSetSearchCountry} />
+        value={props.searchCountry}
+        onChange={props.handleCountrySearch} 
+      />
     </div>
   )
 )

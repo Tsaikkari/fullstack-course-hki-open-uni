@@ -1,15 +1,17 @@
 import React from 'react';
-
-const Country = ({ filteredCountry }) => {
+// TODO: show flag
+const Country = ({ country }) => {
   return (
     <div>
-      <h1>{filteredCountry.name}</h1>
-      <p>{filteredCountry.capital}</p>
-      <p>{filteredCountry.population}</p>
-      <h3>languages</h3>
-      <ul>
-        <li>{filteredCountry.languages}</li>
-      </ul>
+      <h1>{country.name}</h1>
+      <p>capital {country.capital}</p>
+      <p>population {country.population}</p>
+      <div>
+    {country.languages.map((language, i) => 
+      <p key={i}>{language.name}</p>
+    )}
+    </div>
+      <a href={country.flag}></a>
     </div>
   )
 }
