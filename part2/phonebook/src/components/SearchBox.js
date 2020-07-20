@@ -4,7 +4,7 @@ const SearchBox = (props) => {
   return (
     <div>
       filter shown with
-      <input value={props.searchPerson} onChange={props.handlePersonSearch}/>
+      <input value={props.filteredPeople} onChange={props.handlePersonSearch}/>
     </div>
   )
 }

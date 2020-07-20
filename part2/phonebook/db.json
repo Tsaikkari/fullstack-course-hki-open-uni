@@ -1,16 +1,6 @@
 {
   "people": [
     {
-      "id": 1,
-      "name": "Arto Hellas",
-      "number": "040-123456"
-    },
-    {
-      "id": 2,
-      "name": "Ada Lovelace",
-      "number": "39-44-5323523"
-    },
-    {
       "id": 3,
       "name": "Dan Abramov",
       "number": "12-43-234345"
@@ -21,11 +11,6 @@
       "number": "39-23-6423122"
     },
     {
-      "name": "kirsi",
-      "number": "2345",
-      "id": 5
-    },
-    {
       "name": "another name",
       "number": "1723859ß",
       "id": 6
@@ -34,11 +19,6 @@
       "name": "yes",
       "number": "1237859ß",
       "id": 7
-    },
-    {
-      "name": "test",
-      "number": "89",
-      "id": 8
     }
   ]
 }

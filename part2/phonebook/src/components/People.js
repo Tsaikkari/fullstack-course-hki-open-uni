@@ -5,7 +5,12 @@ const People = (props) => {
   return (
     <div>
       {props.peopleToShow.map((person, i) => 
-        <Person key={i} person={person} />
+        <div key={i} >
+          <Person 
+            person={person} 
+          />
+          <button onClick={(id) => props.deletePerson(person.id)}>delete</button>
+        </div>
       )}
     </div>
   )
