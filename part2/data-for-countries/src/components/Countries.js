@@ -1,12 +1,18 @@
 import React from 'react';
+import Country from './Country';
 
 const Countries = (props) => {
   return (
     <div>
-      {props.filteredCountries.length > 10 
-      ? <p>Too many matches, specify another filter</p>
-      : props.filteredCountries.map((country, i) => 
-        <p key={i}>{country.name}</p>
+      {props.filteredCountries.map((country, i) => 
+        <div key={i}>
+        <span>{country.name}</span>
+        <button onClick={() => props.showDetails(country.name)}>show</button>
+          {props.showCountry
+          ? <Country country={country} showCountry={props.showCountry}/>
+          : null
+        }
+        </div>
       )}
     </div>
   )

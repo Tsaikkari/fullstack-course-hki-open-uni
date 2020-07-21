@@ -1,5 +1,5 @@
 import React from 'react';
-// TODO: show flag
+
 const Country = ({ country }) => {
   return (
     <div>
@@ -12,7 +12,7 @@ const Country = ({ country }) => {
         <li key={i}>{language.name}</li>
         )}
       </ul>
-      <img src={country.flag} />
+      <img src={country.flag} alt="flag" />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Languages = ({ country }) => {
-  const languages = country.languages
+const Languages = (props) => {
+
   return (
     <div>
       <h3>languages</h3>
