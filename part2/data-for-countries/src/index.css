@@ -1,13 +1,17 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.flag-pic {
+  width: 100px;
+  height: 70px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.country {
+  padding: 10px;
+}
+
+.button {
+  padding: 5px 6px;
+  border: none;
+  border-radius: 3px;
+  margin: 3px 0;
+  color: white;
+  background: #36c275;
 }

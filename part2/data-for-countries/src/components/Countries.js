@@ -6,11 +6,12 @@ const Countries = (props) => {
     <div>
       {props.filteredCountries.map((country, i) => 
         <div key={i}>
-        <span>{country.name}</span>
-        <button onClick={() => props.showDetails(country.name)}>show</button>
+        <span className="country">{country.name} </span>
+        <button className="button" onClick={() => props.showDetails(country.name)}>show</button>
           {country.name === props.detailCountry.name
-          ? <Country country={country} showCountry={props.showCountry}/>
-          : null
+          && <div><Country country={country} />
+          <p>{props.weather}sää</p>
+          </div>
         }
         </div>
       )}

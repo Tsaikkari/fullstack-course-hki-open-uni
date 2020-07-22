@@ -3,7 +3,7 @@ import React from 'react';
 const SearchBox = (props) => (
   (
     <div>
-      find countries 
+      <span>find countries </span> 
       <input type="text" 
         value={props.searchCountry}
         onChange={props.handleCountrySearch} 
