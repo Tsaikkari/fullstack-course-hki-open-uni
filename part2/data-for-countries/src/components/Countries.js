@@ -8,7 +8,7 @@ const Countries = (props) => {
         <div key={i}>
         <span>{country.name}</span>
         <button onClick={() => props.showDetails(country.name)}>show</button>
-          {props.showCountry
+          {country.name === props.detailCountry.name
           ? <Country country={country} showCountry={props.showCountry}/>
           : null
         }

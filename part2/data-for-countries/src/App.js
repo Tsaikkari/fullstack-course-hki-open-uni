@@ -33,7 +33,7 @@ const App = () => {
     }
   }
 
-  // 2.13*: TODO: fix
+  // 2.13*: TODO: add weather
   const showCountryDetails = (name) => {
     const detailCountry = filteredCountries.find(country => country.name === name)
     console.log(detailCountry)
