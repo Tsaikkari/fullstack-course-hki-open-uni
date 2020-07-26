@@ -10,9 +10,13 @@ const Countries = (props) => {
         <button className="button" onClick={() => props.showDetails(country.name)}>show</button>
           {country.name === props.detailCountry.name
           && <div><Country country={country} />
-          <p>{props.weather}sää</p>
+          <h2>Weather in {country.capital}</h2>
+          <p><strong>overview:</strong> {props.weather.description}</p>
+          <p><strong>temperature:</strong> {props.weather.temperature}</p>
+          <img className="weather-icon" src={props.weather.imageURL} alt="icon"/>
+          <p><strong>wind speed:</strong> {props.weather.windSpeed}</p>
           </div>
-        }
+          }
         </div>
       )}
     </div>
