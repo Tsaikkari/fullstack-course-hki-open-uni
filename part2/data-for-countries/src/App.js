@@ -37,7 +37,7 @@ const App = () => {
   }
 
   // TODO: no error when filtering after click
-  // get the api_key working
+  
   const showCountryDetails = (name) => {
     const detailCountry = filteredCountries.find(country => country.name === name)
     setShowCountry(!showCountry)
@@ -70,8 +70,6 @@ const App = () => {
     }).catch((error) => {
       console.log(error)
     })
-    
-    setWeather(weather)
   }
     
   return (
