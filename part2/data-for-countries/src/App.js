@@ -77,7 +77,6 @@ const App = () => {
       <SearchBox 
         searchCountry={searchCountry}
         handleCountrySearch={handleCountrySearch}
-        weather={weather}
       />
       
       {(filteredCountries.length > 1 
