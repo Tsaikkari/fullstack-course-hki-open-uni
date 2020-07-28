@@ -53,7 +53,7 @@ const App = () => {
     namesOfPeopleInPhonebook.includes(newName) && !people.includes(newNumber)
     ?
     (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)
-    && updatePerson()
+    && handleSetUpdated()
     )
     //alert(`${newName} is already added to the phonebook`)
     :
@@ -81,7 +81,6 @@ const App = () => {
     .update(id, changedPerson)
     .then(returnedPerson => {
       setPeople(people.map(person => person.id === id && returnedPerson))
-      setUpdated(true)
       setMessage(
         `Number was updated`
       )
@@ -114,6 +113,10 @@ const App = () => {
 
   const handleNumberChange = (event) => {
     setNewNumber(event.target.value)
+  }
+
+  const handleSetUpdated = () => {
+    setUpdated(true)
   }
 
   return (

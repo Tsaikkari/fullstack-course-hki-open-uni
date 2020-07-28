@@ -1,9 +1,11 @@
 import React from 'react';
 
-const PeopleForm = (props) => {
+const PeopleForm = (props, { person }) => {
+  console.log(person)
   // TODO: fix the person.id
+  // props.isUpdated ? props.peopleToShow.map(person => () => props.updatePerson(person.id)) : props.addPerson
   return (
-    <form onSubmit={props.isUpdated ? () => props.updatePerson(props.person.id) : props.addPerson}>
+    <form onSubmit={props.isUpdated ? () => props.updatePerson(person.id) : props.addPerson}>
       <div>
         <span>name: </span> 
         <input 

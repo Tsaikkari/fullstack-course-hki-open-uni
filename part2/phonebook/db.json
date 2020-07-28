@@ -3,17 +3,20 @@
     {
       "id": 3,
       "name": "Dan Abramov",
-      "number": "12-43-234345"
+      "number": "12-43-234345",
+      "newNumber": ""
     },
     {
       "id": 4,
       "name": "Mary Poppendieck",
-      "number": "39-23-6423122"
+      "number": "39-23-6423122",
+      "newNumber": ""
     },
     {
       "name": "Kirsi",
       "number": "1",
-      "id": 5
+      "id": 5,
+      "newNumber": ""
     }
   ]
 }
