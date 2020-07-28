@@ -3,7 +3,7 @@ import React from 'react';
 const SearchBox = (props) => {
   return (
     <div>
-      filter shown with
+      <span>filter shown with </span>
       <input value={props.filteredPeople} onChange={props.handlePersonSearch}/>
     </div>
   )

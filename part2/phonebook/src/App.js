@@ -3,6 +3,7 @@ import PeopleForm from './components/PeopleForm';
 import People from './components/People'
 import personService from './services/people';
 import SearchBox from './components/SearchBox';
+import Notification from './components/Notification';
 
 const App = () => {
   const [people, setPeople] = useState([]) 
@@ -11,6 +12,9 @@ const App = () => {
   const [showAll, setShowAll] = useState(true)
   const [searchPerson, setSearchPerson]  = useState('')
   const [filteredPeople, setFilteredPeople] = useState([])
+  const [message, setMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const [isUpdated, setUpdated] = useState(false)
 
   useEffect(() => {
     personService
@@ -43,13 +47,15 @@ const App = () => {
       name: newName,
       number: newNumber
     }
-    let namesOfPeopleInPhonebook = people.map((person) => {
+    const namesOfPeopleInPhonebook = people.map((person) => {
       return person.name
     })
-  
-    namesOfPeopleInPhonebook.includes(newName) 
+    namesOfPeopleInPhonebook.includes(newName) && !people.includes(newNumber)
     ?
-      alert(`${newName} is already added to the phonebook`)
+    (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)
+    && updatePerson()
+    )
+    //alert(`${newName} is already added to the phonebook`)
     :
       personService
       .create(personObject)
@@ -57,17 +63,47 @@ const App = () => {
         setPeople(people.concat(returnedPerson))
         setNewName('')
         setNewNumber('')
+        setMessage(
+          `Added ${newName}`
+        )
+        setTimeout(() => {
+          setMessage(null)
+        }, 5000)
       })
   }
 
+  const updatePerson = (id) => {
+    console.log(id)
+    const person = peopleToShow.find(p => p.id === id)
+    console.log(person)
+    const changedPerson = { ...person, newNumber }
+    personService
+    .update(id, changedPerson)
+    .then(returnedPerson => {
+      setPeople(people.map(person => person.id === id && returnedPerson))
+      setUpdated(true)
+      setMessage(
+        `Number was updated`
+      )
+      setTimeout(() => {
+        setMessage(null)
+      }, 5000)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
   const deletePerson = (id) => {
-    //const delPerson = people.find(p => p.id === id)
     personService
     .del(id)
-    .then(response => {
+    .then(() => {
       setPeople(people.filter(p => p.id !== id))
     })
     .catch(error => {
+      setErrorMessage(
+        `Error happened`
+      )
       console.log(error)
     })
   }
@@ -81,8 +117,12 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div className="app">
       <h1>Phonebook</h1>
+      {(message || errorMessage) &&
+      <Notification 
+        message={message} 
+        errorMessage={errorMessage} />}
       <SearchBox 
         searchPerson={searchPerson}
         handlePersonSearch={handlePersonSearch}
@@ -90,10 +130,13 @@ const App = () => {
       <h2>add a new</h2>
       <PeopleForm 
         addPerson={addPerson}
+        updatePerson={updatePerson}
         newName={newName}
         newNumber={newNumber}
         handleNumberChange={handleNumberChange}
         handlePersonChange={handlePersonChange}
+        peopleToShow={peopleToShow}
+        isUpdated={isUpdated}
       />
       <h2>Numbers</h2>
       <People 
