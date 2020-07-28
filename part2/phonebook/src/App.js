@@ -57,23 +57,25 @@ const App = () => {
     )
     //alert(`${newName} is already added to the phonebook`)
     :
-      personService
-      .create(personObject)
-      .then(returnedPerson => {
-        setPeople(people.concat(returnedPerson))
-        setNewName('')
-        setNewNumber('')
-        setMessage(
-          `Added ${newName}`
-        )
-        setTimeout(() => {
-          setMessage(null)
-        }, 5000)
-      })
+    personService
+    .create(personObject)
+    .then(returnedPerson => {
+      setPeople(people.concat(returnedPerson))
+      setNewName('')
+      setNewNumber('')
+      setMessage(
+        `Added ${newName}`
+      )
+      setTimeout(() => {
+        setMessage(null)
+      }, 5000)
+    })
   }
 
-  const updatePerson = (id) => {
-    console.log(id)
+  // FIX
+  const updatePerson = (id, newNumber) => {
+    console.log(id) // Lenovo can fly...
+    console.log(newNumber)
     const person = peopleToShow.find(p => p.id === id)
     console.log(person)
     const changedPerson = { ...person, newNumber }
@@ -117,6 +119,7 @@ const App = () => {
 
   const handleSetUpdated = () => {
     setUpdated(true)
+    updatePerson()
   }
 
   return (

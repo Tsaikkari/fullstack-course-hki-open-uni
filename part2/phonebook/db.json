@@ -16,7 +16,12 @@
       "name": "Kirsi",
       "number": "1",
       "id": 5,
-      "newNumber": ""
+      "newNumber": "2"
+    },
+    {
+      "name": "Joku",
+      "number": "2",
+      "id": 6
     }
   ]
 }
