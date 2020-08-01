@@ -1,27 +1,22 @@
 {
   "people": [
     {
-      "id": 3,
-      "name": "Dan Abramov",
-      "number": "12-43-234345",
-      "newNumber": ""
-    },
-    {
       "id": 4,
       "name": "Mary Poppendieck",
       "number": "39-23-6423122",
       "newNumber": ""
     },
     {
-      "name": "Kirsi",
-      "number": "1",
-      "id": 5,
-      "newNumber": "2"
+      "name": "Joku",
+      "number": "23",
+      "id": 6,
+      "newNumber": "6"
     },
     {
-      "name": "Joku ",
-      "number": "1",
-      "id": 6
+      "name": "Kirsi",
+      "number": "2",
+      "id": 7,
+      "newNumber": "2"
     }
   ]
 }

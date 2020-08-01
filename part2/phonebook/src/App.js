@@ -119,14 +119,11 @@ const App = () => {
   }
 
   const handleSetUpdated = () => {
+    const person = peopleToShow.find(person => person.name === newName)
+    const id = person.id
+  
     setUpdated(true)
-    setNewNumber(value => {
-      console.log(value)
-      return { 
-        number: value
-      }
-    })  
-    updatePerson()
+    updatePerson(id, newNumber)
   }
 
   return (
@@ -150,6 +147,7 @@ const App = () => {
         handlePersonChange={handlePersonChange}
         peopleToShow={peopleToShow}
         isUpdated={isUpdated}
+        handleSetUpdated={handleSetUpdated}
       />
       <h2>Numbers</h2>
       <People 
