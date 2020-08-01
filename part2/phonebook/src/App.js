@@ -73,7 +73,6 @@ const App = () => {
     })
   }
 
-  // FIX
   const updatePerson = (id, newNumber) => {
     console.log(id) 
     console.log(newNumber)
