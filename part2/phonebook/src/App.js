@@ -74,10 +74,7 @@ const App = () => {
   }
 
   const updatePerson = (id, newNumber) => {
-    console.log(id) 
-    console.log(newNumber)
     const person = peopleToShow.find(p => p.id === id)
-    console.log(person)
     const changedPerson = { ...person, number: newNumber }
     personService
     .update(id, changedPerson)
@@ -123,7 +120,6 @@ const App = () => {
   
     setUpdated(true)
     updatePerson(id, newNumber)
-    console.log(id, newNumber)
   }
 
   return (

@@ -2,7 +2,6 @@ import React from 'react';
 
 const PeopleForm = (props) => {
   const person = props.peopleToShow.find(person => person.name === props.newName)
-  console.log(person)
   const getPersonId = () => {
     if (props.newName && person) {
       return person.id
