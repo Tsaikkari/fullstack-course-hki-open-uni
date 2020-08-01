@@ -73,6 +73,7 @@ const App = () => {
     })
   }
 
+  // TODO: after update one shouldn't need to refresh the page to get other people's contact info back
   const updatePerson = (id, newNumber) => {
     const person = peopleToShow.find(p => p.id === id)
     const changedPerson = { ...person, number: newNumber }
@@ -88,8 +89,11 @@ const App = () => {
       }, 5000)
     })
     .catch(error => {
-      console.log(error)
+      setMessage(`Information of ${person.name} has already been removed from server`)
     })
+    setTimeout(() => {
+      setMessage(null)
+    }, 5000)
   }
 
   const deletePerson = (id) => {

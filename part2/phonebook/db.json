@@ -3,20 +3,7 @@
     {
       "id": 4,
       "name": "Mary Poppendieck",
-      "number": "39-23-6423122",
-      "newNumber": ""
-    },
-    {
-      "name": "Joku",
-      "number": "1",
-      "id": 6,
-      "newNumber": "6"
-    },
-    {
-      "name": "Kirsi",
-      "number": "8",
-      "id": 7,
-      "newNumber": "1"
+      "number": "39-23-6423122"
     }
   ]
 }
