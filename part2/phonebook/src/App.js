@@ -29,11 +29,12 @@ const App = () => {
   : filteredPeople
 
   const handlePersonSearch = (event) => {
+    let searchPerson = event.target.value
     let filteredPeople = people.filter(person => {
-      return person.name.toLowerCase().includes(event.target.value.toLowerCase())
+      return person.name.toLowerCase().includes(searchPerson.toLowerCase())
     })
-    setSearchPerson(event.target.value)
-    if (event.target.value === '') {
+    setSearchPerson(searchPerson)
+    if (searchPerson === '') {
       setShowAll(peopleToShow)
     } else {
       setFilteredPeople(filteredPeople)
@@ -50,7 +51,7 @@ const App = () => {
     const namesOfPeopleInPhonebook = people.map((person) => {
       return person.name
     })
-    namesOfPeopleInPhonebook.includes(newName) && !people.includes(newNumber)
+    namesOfPeopleInPhonebook.includes(newName) // && !people.includes(newNumber)
     ?
     (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)
     && handleSetUpdated()
@@ -119,6 +120,12 @@ const App = () => {
 
   const handleSetUpdated = () => {
     setUpdated(true)
+    setNewNumber(value => {
+      console.log(value)
+      return { 
+        number: value
+      }
+    })  
     updatePerson()
   }
 

@@ -11,7 +11,7 @@ const PeopleForm = (props) => {
   
   return (
     <form onSubmit=
-      {(props.isUpdated && getPersonId())
+      {(getPersonId() && props.isUpdated)
       ? () => props.updatePerson(person.id, props.newNumber)
       : props.addPerson
       }
