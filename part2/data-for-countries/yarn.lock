@@ -6599,7 +6599,7 @@ json-schema@^0.4.0:
   resolved "https://registry.yarnpkg.com/json-schema/-/json-schema-0.4.0.tgz#f7de4cf6efab838ebaeb3236474cbba5a1930ab5"
   integrity sha512-es94M3nTIfsEPisRafak+HDLfHXnKBhV3vU5eqPcS3flIWqcxJWgXHXiey3YrpaNsanY5ei1VoYEbOzijuq9BA==
 
-json-server@^0.16.1:
+json-server@^0.16.3:
   version "0.16.3"
   resolved "https://registry.yarnpkg.com/json-server/-/json-server-0.16.3.tgz#75e0417bc346f5f221a74f4d2ce4b67f52204a8e"
   integrity sha512-tbsBONiefH7SR5EhSmK4EzwP3kCHuOduUq5hWAQjCwXTva4OBeKVcPrciHNWOK/+12ygtUnjuWcAxuHgqTuBLA==
@@ -7090,12 +7090,7 @@ mz@^2.7.0:
     object-assign "^4.0.1"
     thenify-all "^1.0.0"
 
-nanoid@^3.1.16:
-  version "3.1.29"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.29.tgz#214fb2d7a33e1a5bef4757b779dfaeb6a4e5aeb4"
-  integrity sha512-dW2pUSGZ8ZnCFIlBIA31SV8huOGCHb6OwzVCc7A69rb/a+SgPBwfmLvK5TKQ3INPbRkcI8a/Owo0XbiTNH19wg==
-
-nanoid@^3.3.6:
+nanoid@^3.1.16, nanoid@^3.3.6:
   version "3.3.6"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.6.tgz#443380c856d6e9f9824267d960b4236ad583ea4c"
   integrity sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==
